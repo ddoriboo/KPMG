@@ -53,5 +53,5 @@ st.markdown(html_code, unsafe_allow_html=True)
 st.write("이미지를 클릭하여 자세한 내용을 확인하세요.")
 
 # 기존의 버튼 유지 (선택 사항)
-if st.button("자세히 보기 (버튼)"):
+if st.button("자세히 보기"):
     st.markdown("[KPMG AI 센터 자료 다운로드](https://drive.google.com/file/d/1FcBc0E9W6pW97JaDMgE1HODSlqZFFmWF/view?usp=sharing)")
