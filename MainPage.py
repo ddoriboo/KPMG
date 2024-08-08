@@ -17,19 +17,55 @@ hide_st_style = """
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-# 배경 이미지 설정
+# 배경 이미지 설정 (반응형)
 def set_bg_hack(main_bg):
     bin_str = get_base64_of_bin_file(main_bg)
     page_bg_img = f'''
     <style>
     .stApp {{
         background-image: url("data:image/png;base64,{bin_str}");
-        background-size: cover;
+        background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        background-color: #0A2F5A;  /* KPMG 파란색 배경 */
         height: 100vh;
+        width: 100vw;
         margin: 0;
         padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }}
+    .fullscreen-container {{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }}
+    .content-wrapper {{
+        max-width: 100%;
+        max-height: 100%;
+        aspect-ratio: 16 / 9;  /* 이미지의 비율에 맞게 조정 */
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("data:image/png;base64,{bin_str}");
+    }}
+    @media (max-aspect-ratio: 16/9) {{
+        .content-wrapper {{
+            width: 100%;
+            height: auto;
+        }}
+    }}
+    @media (min-aspect-ratio: 16/9) {{
+        .content-wrapper {{
+            width: auto;
+            height: 100%;
+        }}
     }}
     </style>
     '''
@@ -59,8 +95,11 @@ clickable_area_style = """
 """
 
 clickable_area_html = f"""
-<a href="https://drive.google.com/file/d/1FcBc0E9W6pW97JaDMgE1HODSlqZFFmWF/view?usp=sharing" target="_blank" class="clickable-fullscreen">
-</a>
+<div class="fullscreen-container">
+    <a href="https://drive.google.com/file/d/1FcBc0E9W6pW97JaDMgE1HODSlqZFFmWF/view?usp=sharing" target="_blank" class="clickable-fullscreen">
+        <div class="content-wrapper"></div>
+    </a>
+</div>
 """
 
 # 스타일과 클릭 가능한 영역 추가
