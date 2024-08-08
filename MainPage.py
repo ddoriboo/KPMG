@@ -41,46 +41,24 @@ def get_base64_of_bin_file(bin_file):
 # 배경 이미지 설정
 set_bg_hack('IMG_7287.png')
 
-# 클릭 가능한 영역 스타일
+# 전체 화면 클릭 가능 영역 스타일 및 HTML
 clickable_area_style = """
 <style>
-    .clickable-area {
-        position: absolute;
-        top: 60%;
-        right: 5%;
-        width: 15%;
-        height: 20%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .clickable-button {
-        background-color: rgba(255, 255, 255, 0.2);
-        color: white;
-        padding: 10px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
+    .clickable-fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
         cursor: pointer;
-        border-radius: 5px;
-        border: 1px solid white;
-        transition: background-color 0.3s;
-    }
-    .clickable-button:hover {
-        background-color: rgba(255, 255, 255, 0.4);
+        z-index: 9999;
     }
 </style>
 """
 
-# 클릭 가능한 영역 HTML
 clickable_area_html = f"""
-<div class="clickable-area">
-    <a href="https://drive.google.com/file/d/1FcBc0E9W6pW97JaDMgE1HODSlqZFFmWF/view?usp=sharing" target="_blank" class="clickable-button">AI 상시 PI</a>
-    <a href="https://drive.google.com/file/d/1FcBc0E9W6pW97JaDMgE1HODSlqZFFmWF/view?usp=sharing" target="_blank" class="clickable-button">AI 거버넌스</a>
-    <a href="https://drive.google.com/file/d/1FcBc0E9W6pW97JaDMgE1HODSlqZFFmWF/view?usp=sharing" target="_blank" class="clickable-button">AI 내부통제</a>
-</div>
+<a href="https://drive.google.com/file/d/1FcBc0E9W6pW97JaDMgE1HODSlqZFFmWF/view?usp=sharing" target="_blank" class="clickable-fullscreen">
+</a>
 """
 
 # 스타일과 클릭 가능한 영역 추가
