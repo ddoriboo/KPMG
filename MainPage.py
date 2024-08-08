@@ -1,15 +1,53 @@
 import streamlit as st
-import base64
 
 # 페이지 설정
 st.set_page_config(page_title="KPMG AI 센터", layout="wide")
 
-# 스타일 설정
-def local_css(file_name):
-    with open(file_name, "r") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# CSS 스타일 정의
+css = """
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #0A2F5A;
+        color: white;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #00338D;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .button {
+        background-color: #00338D;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+"""
 
-local_css("style.css")  # style.css 파일을 만들어 스타일을 정의해야 합니다.
+st.markdown(css, unsafe_allow_html=True)
 
 # 헤더
 st.markdown("<h1 style='color: white;'>KPMG AI 센터</h1>", unsafe_allow_html=True)
@@ -64,8 +102,8 @@ with col1:
         </div>
     """, unsafe_allow_html=True)
 
-    # AI Driven 이미지
-    st.image("ai_driven_image.png", width=100)  # AI Driven 이미지를 추가해야 합니다.
+    # AI Driven 텍스트 (이미지 대신 텍스트로 대체)
+    st.markdown("<div style='text-align: center; font-size: 24px; font-weight: bold; margin: 20px 0;'>AI Driven</div>", unsafe_allow_html=True)
 
     # 두 개의 원
     st.markdown("""
@@ -83,14 +121,9 @@ with col2:
     ai_governance_link = "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_2"
     ai_internal_control_link = "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3"
 
-    if st.button('AI 상시 PI'):
-        st.markdown(f'<a href="{ai_pi_link}" target="_blank">AI 상시 PI 문서 다운로드</a>', unsafe_allow_html=True)
-
-    if st.button('AI 거버넌스'):
-        st.markdown(f'<a href="{ai_governance_link}" target="_blank">AI 거버넌스 문서 다운로드</a>', unsafe_allow_html=True)
-
-    if st.button('AI 내부통제'):
-        st.markdown(f'<a href="{ai_internal_control_link}" target="_blank">AI 내부통제 문서 다운로드</a>', unsafe_allow_html=True)
+    st.markdown(f'<a href="{ai_pi_link}" target="_blank" class="button">AI 상시 PI</a>', unsafe_allow_html=True)
+    st.markdown(f'<a href="{ai_governance_link}" target="_blank" class="button">AI 거버넌스</a>', unsafe_allow_html=True)
+    st.markdown(f'<a href="{ai_internal_control_link}" target="_blank" class="button">AI 내부통제</a>', unsafe_allow_html=True)
 
 # 푸터
 st.markdown("""
