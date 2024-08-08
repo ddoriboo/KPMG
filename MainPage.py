@@ -5,12 +5,14 @@ import base64
 # 페이지 설정
 st.set_page_config(page_title="KPMG AI 센터", layout="wide", initial_sidebar_state="collapsed")
 
-# Streamlit 기본 요소 숨기기
+# Streamlit 기본 요소 및 Manage app 버튼 숨기기
 hide_st_style = """
     <style>
     #MainMenu {visibility: hidden;}
     header {visibility: hidden;}
     footer {visibility: hidden;}
+    [data-testid="stToolbar"] {visibility: hidden !important;}
+    .viewerBadge_container__1QSob {display: none !important;}
     </style>
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
