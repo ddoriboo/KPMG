@@ -6,10 +6,26 @@ st.set_page_config(page_title="KPMG AI 센터", layout="wide")
 # CSS 스타일 정의
 css = """
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+    
     body {
-        font-family: Arial, sans-serif;
-        background-color: #0A2F5A;
-        color: white;
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+    }
+    .main-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #00338D;
+        font-weight: 700;
+    }
+    .subtitle {
+        color: #005EB8;
+        font-weight: 500;
     }
     .grid-container {
         display: grid;
@@ -17,20 +33,28 @@ css = """
         gap: 20px;
     }
     .grid-item {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: #f8f8f8;
         padding: 20px;
         border-radius: 10px;
+        border: 1px solid #e0e0e0;
+    }
+    .grid-item h3 {
+        color: #00338D;
+        font-weight: 500;
     }
     .circle {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
         background-color: #00338D;
+        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         padding: 10px;
+        font-weight: 500;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .button {
         background-color: #00338D;
@@ -43,24 +67,48 @@ css = """
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 5px;
+        border: none;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #005EB8;
+    }
+    .ai-driven {
+        font-size: 24px;
+        font-weight: bold;
+        color: #00338D;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
 </style>
 """
 
 st.markdown(css, unsafe_allow_html=True)
 
+# 메인 컨텐츠
+st.markdown('<div class="main-content">', unsafe_allow_html=True)
+
 # 헤더
-st.markdown("<h1 style='color: white;'>KPMG AI 센터</h1>", unsafe_allow_html=True)
+st.markdown("<h1>KPMG AI 센터</h1>", unsafe_allow_html=True)
 
 # 서브헤더
 st.markdown("""
-    <p style='color: #FFD700;'>
+    <p class="subtitle">
     KPMG 도메인 전문성과 AI기술 개발 역량을 결합하여 기업 비즈니스 혁신을 위한<br>
     전략적 파트너로 역할을 수행하고, 단발성 프로젝트가 아닌 지속적 가치 창출 관점으로 접근
     </p>
 """, unsafe_allow_html=True)
 
-# 메인 컨텐츠
 col1, col2 = st.columns([3, 1])
 
 with col1:
@@ -102,8 +150,8 @@ with col1:
         </div>
     """, unsafe_allow_html=True)
 
-    # AI Driven 텍스트 (이미지 대신 텍스트로 대체)
-    st.markdown("<div style='text-align: center; font-size: 24px; font-weight: bold; margin: 20px 0;'>AI Driven</div>", unsafe_allow_html=True)
+    # AI Driven 텍스트
+    st.markdown("<div class='ai-driven'>AI Driven</div>", unsafe_allow_html=True)
 
     # 두 개의 원
     st.markdown("""
@@ -125,9 +173,11 @@ with col2:
     st.markdown(f'<a href="{ai_governance_link}" target="_blank" class="button">AI 거버넌스</a>', unsafe_allow_html=True)
     st.markdown(f'<a href="{ai_internal_control_link}" target="_blank" class="button">AI 내부통제</a>', unsafe_allow_html=True)
 
+st.markdown('</div>', unsafe_allow_html=True)
+
 # 푸터
 st.markdown("""
-    <div style='position: fixed; bottom: 0; width: 100%; background-color: #333; color: white; text-align: center; padding: 10px;'>
+    <div class='footer'>
         © 2024 KPMG Samjong Accounting Corp., a Korea Limited Liability Company and a member firm of the KPMG global organization of independent member firms affiliated with KPMG International Limited, a private English company limited by guarantee. All rights reserved.
     </div>
 """, unsafe_allow_html=True)
